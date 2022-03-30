@@ -1,0 +1,27 @@
+import Link from "next/link";
+import Image from "next/image";
+import styles from "../styles/questCard.styles";
+import { Quest } from "../types/index";
+
+export default function QuestCards({ questData: Quest }) {
+  console.log("styles", styles.questContainer);
+  return (
+    <Link href="/quest/">
+      <div
+        className={styles.questContainer}
+        style={{ border: "1px solid black" }}
+      >
+        {/* <div className="flex flex-col justify-center self-center"> */}
+        <div className="flex flex-col justify-center self-center">
+          <Image src={Quest.img} width="150" height="150" alt={Quest.id} />
+        </div>
+        <a title="lil">
+          <div className={styles.questTextContainer}>
+            <h2 className="text-xl m-0 p-0 text-gray-600">{Quest.id}</h2>
+            <p className="text-gray-600 p-0 m-0 text-xs">{Quest.description}</p>
+          </div>
+        </a>
+      </div>
+    </Link>
+  );
+}
