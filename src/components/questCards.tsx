@@ -1,19 +1,21 @@
+// import fs from "fs";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/questCard.styles";
 import { Quest } from "../types/index";
 
+          // <NextLink href={`/${journey.id}`} passHref>
+
 export default function QuestCards({ questData: Quest }) {
-  console.log("styles", styles.questContainer);
   return (
-    <Link href="/quest/">
+    <Link href={`/quest/${Quest.id}`} passHref>
       <div
         className={styles.questContainer}
         style={{ border: "1px solid black" }}
       >
         {/* <div className="flex flex-col justify-center self-center"> */}
         <div className="flex flex-col justify-center self-center">
-          <Image src={Quest.img} width="150" height="150" alt={Quest.id} />
+          {/* <Image src={require("")} width="150" height="150" alt={Quest.id} /> */}
         </div>
         <a title="lil">
           <div className={styles.questTextContainer}>

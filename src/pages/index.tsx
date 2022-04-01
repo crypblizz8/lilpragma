@@ -6,8 +6,9 @@ import styles from "../styles/Home.module.css";
 // import styles from "../styles/Home.module.css";
 import { Quest } from "../types/index";
 import questData from "../quests/quests";
+import { getQuestNames, getJourneys } from "../quests/questData";
 
-export default function Home() {
+export default function Home({ getJourneysData }) {
   const headContent = (
     <Head>
       <title>lil pragma</title>
@@ -18,7 +19,7 @@ export default function Home() {
 
   const questContent = (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
-      {questData.map((e: Quest, i) => {
+      {getJourneysData.map((e: Quest, i) => {
         return <QuestCards key={i} questData={e} />;
       })}
     </div>
@@ -53,4 +54,18 @@ export default function Home() {
       {footerContent}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  // const allQuestData = JSON.stringify(getQuestNames());
+  const allQuestData = getQuestNames();
+  const getJourneysData = getJourneys();
+  // console.log("getQuestNames", allQuestData);
+  console.log("getQuestNames", allQuestData);
+  console.log("getJourneysData", getJourneysData);
+  return {
+    props: {
+      getJourneysData,
+    },
+  };
 }
