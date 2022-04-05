@@ -5,6 +5,7 @@ export interface Quest {
     img: string
     website?: string
     twitter?: string
+    available: string
     tasks?: Array<Task>
 }
 

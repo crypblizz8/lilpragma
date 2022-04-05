@@ -4,11 +4,12 @@ import Image from "next/image";
 import styles from "../styles/questCard.styles";
 import { Quest } from "../types/index";
 
-          // <NextLink href={`/${journey.id}`} passHref>
+// <NextLink href={`/${journey.id}`} passHref>
 
 export default function QuestCards({ questData: Quest }) {
+  // console.log("questID", Quest.id);
   return (
-    <Link href={`/quest/${Quest.id}`} passHref>
+    <Link href={`/${Quest.id}`} passHref>
       <div
         className={styles.questContainer}
         style={{ border: "1px solid black" }}

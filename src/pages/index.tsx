@@ -16,14 +16,23 @@ export default function Home({ getJourneysData }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
-
-  const questContent = (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
-      {getJourneysData.map((e: Quest, i) => {
-        return <QuestCards key={i} questData={e} />;
-      })}
-    </div>
-  );
+  
+  const questContent = (enabledQuest: boolean) => {
+    return (
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
+        {getJourneysData.map((e: Quest, i) => {
+          if (enabledQuest && e.available) {
+            console.log(e.available);
+            return <QuestCards key={i} questData={e} />;
+          } else if (enabledQuest === false && !e.available) {
+            return <QuestCards key={i} questData={e} />;
+          } else {
+            return null;
+          }
+        })}
+      </div>
+    );
+  };
 
   const footerContent = (
     <footer className={styles.footer}>
@@ -47,8 +56,12 @@ export default function Home({ getJourneysData }) {
       <main className={styles.main}>
         <h1 className="text-6xl">lil pragma</h1>
         {/* <h1 className="text-6xl sm:text-6xl">lil pragma</h1> */}
-        <p className="py-6 text-2xl text-slate-500">smoll web3 projects</p>
-        {questContent}
+        <p className="py-6 text-2xl text-slate-500">
+          smoll web3 projects with a lil dev score
+        </p>
+        {questContent(true)}
+        <h1 className="py-6 text-4xl">future lils</h1>
+        {questContent(false)}
       </main>
 
       {footerContent}
@@ -58,11 +71,11 @@ export default function Home({ getJourneysData }) {
 
 export async function getStaticProps() {
   // const allQuestData = JSON.stringify(getQuestNames());
-  const allQuestData = getQuestNames();
+  // const allQuestData = getQuestNames();
   const getJourneysData = getJourneys();
   // console.log("getQuestNames", allQuestData);
-  console.log("getQuestNames", allQuestData);
-  console.log("getJourneysData", getJourneysData);
+  // console.log("getQuestNames", allQuestData);
+  // console.log("getJourneysData", getJourneysData);
   return {
     props: {
       getJourneysData,
