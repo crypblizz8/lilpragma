@@ -16,7 +16,6 @@ import { Params } from "next/dist/server/router";
 
 export default function QuestPage({ getQuestData }) {
   const quest = getQuestData;
-  console.log("questPage quest", quest);
 
   const headContent = (
     <Head>
@@ -87,30 +86,37 @@ export default function QuestPage({ getQuestData }) {
   };
 
   const mainQuestContent = () => {
+    console.log(quest.tasks);
+    if (!quest.tasks) {
+      return;
+    }
     return (
-      <div className="flex rounded-2xl  h-full w-full my-8 bg-red-400">
-        <div className="w-full h-64"></div>
+      <div className="flex flex-row flex-wrap w-5/6">
+        {quest.tasks.map((e, i) => {
+          return (
+            <div
+              key={i}
+              className="flex flex-col rounded-2xl h-1/2 w-1/3 my-8 bg-red-400"
+            >
+              <h1>{e.name}</h1>
+              <p>{e.description}</p>
+              <p>{e.points}</p>
+            </div>
+          );
+        })}
       </div>
     );
   };
 
   const questDescriptionContent = (
-    <div className="flex flex-row">
+    <div className="flex flex-row item-start">
       <div className="flex flex-column">
         {/* <div className="max-w-[50%]"> */}
-        <div className="max-w-full">
+        <div>
+          {/* <div style={{ height: 250, width: 250, background: "gray" }} /> */}
           <h1 className="text-6xl">{quest.id}</h1>
-          <p className="py-6 text-xl text-slate-500">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget
-            mauris pharetra et ultrices neque ornare aenean. Porta non pulvinar
-            neque laoreet suspendisse interdum consectetur libero. Ut faucibus
-            pulvinar elementum integer enim neque volutpat.
-          </p>
+          <p className="py-6 text-xl text-slate-500">{quest.description}</p>
         </div>
-      </div>
-      <div className="flex-auto">
-        <div style={{ height: 250, width: 250, background: "gray" }} />
       </div>
     </div>
   );
@@ -120,7 +126,6 @@ export default function QuestPage({ getQuestData }) {
       {headContent}
       <main className={styles.main}>
         {questDescriptionContent}
-        {/* {introductionContent()} */}
         {mainQuestContent()}
       </main>
       {footerContent}

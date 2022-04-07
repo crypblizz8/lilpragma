@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useWeb3React } from "@web3-react/core";
 import { useInitialConnect } from "../hooks/useInitialConnect";
 import {
@@ -10,21 +10,22 @@ import {
   walletConnectConnector,
 } from "../utils/web3";
 import { UserRejectedRequestError } from "@web3-react/injected-connector";
+import DropDownMenu from "./dropDownMenu";
 
 export function Wallet() {
   useInitialConnect();
-  const web3Connect = useWeb3React();
-  console.log("web3Connect", web3Connect);
+  const { account, activate, active, deactivate, setError } = useWeb3React();
 
-  function connect() {
-    console.log("connectFunciton");
-    web3Connect.activate(
+  useEffect(() => {}, [active]);
+
+  async function connect() {
+    activate(
       injected,
       (error) => {
         if (error instanceof UserRejectedRequestError) {
           // ignore user rejected error
         } else {
-          web3Connect.setError(error);
+          setError(error);
         }
       },
       false
@@ -45,8 +46,12 @@ export function Wallet() {
     );
   }
 
-  function disconnect() {
-    web3Connect.deactivate();
+  async function disconnect() {
+    try {
+      deactivate();
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   {
@@ -57,32 +62,21 @@ export function Wallet() {
     <div>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => connect}
+        onClick={connect}
       >
         Connect
       </button>
     </div>
   );
 
-  const activeWallet = (
-    <div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => console.log("connected")}
-      >
-        Connected
-      </button>
-    </div>
-  );
-
   return (
     <div>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+      <nav className="flex items-center justify-end flex-wrap p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6"></div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div className="w-full block flex-grow lg:flex lg:items-end lg:w-auto xs:justify-end">
           <div className="text-sm lg:flex-grow"></div>
           <div>
-            <div>{!web3Connect.active ? notConnectedWallet : activeWallet}</div>
+            <DropDownMenu disconnect={disconnect} connect={connect} />
           </div>
         </div>
       </nav>
