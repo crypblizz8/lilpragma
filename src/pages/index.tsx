@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 import { Quest } from "../types/index";
 import questData from "../quests/quests";
 import { getQuestNames, getJourneys } from "../quests/questData";
+import Header from "../components/header";
 
 export default function Home({ getJourneysData }) {
   const headContent = (
@@ -16,13 +17,12 @@ export default function Home({ getJourneysData }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );
-  
+
   const questContent = (enabledQuest: boolean) => {
     return (
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
         {getJourneysData.map((e: Quest, i) => {
           if (enabledQuest && e.available) {
-            console.log(e.available);
             return <QuestCards key={i} questData={e} />;
           } else if (enabledQuest === false && !e.available) {
             return <QuestCards key={i} questData={e} />;
@@ -52,7 +52,7 @@ export default function Home({ getJourneysData }) {
   return (
     <div className={styles.container}>
       {headContent}
-
+      <Header />
       <main className={styles.main}>
         <h1 className="text-6xl">lil pragma</h1>
         {/* <h1 className="text-6xl sm:text-6xl">lil pragma</h1> */}
@@ -70,12 +70,8 @@ export default function Home({ getJourneysData }) {
 }
 
 export async function getStaticProps() {
-  // const allQuestData = JSON.stringify(getQuestNames());
-  // const allQuestData = getQuestNames();
   const getJourneysData = getJourneys();
-  // console.log("getQuestNames", allQuestData);
-  // console.log("getQuestNames", allQuestData);
-  // console.log("getJourneysData", getJourneysData);
+
   return {
     props: {
       getJourneysData,

@@ -130,10 +130,8 @@ export default function QuestPage({ getQuestData }) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const getJourneysData = getJourneys();
-  //   console.log("getJourneysData3", getJourneysData);
   return {
     paths: getJourneysData.map((i) => {
-    //   console.log("id", i.id);
       return { params: { quest: i.id } };
     }),
     fallback: false,
@@ -142,7 +140,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const journeyName = context.params?.quest;
-//console.log("journeyName", journeyName);
   if (!journeyName) {
     return {
       props: null,
@@ -159,7 +156,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       notFound: true,
     };
   }
-//   console.log("getJourneysData", getQuestData);
   return {
     props: {
       getQuestData,
