@@ -39,7 +39,7 @@ export default function DropDownMenu({ disconnect, connect }) {
     <Menu
       as="div"
       className="relative flex text-left"
-      onClick={() => (!active ? connect : connect)}
+      onClick={() => (!active ? null : connect)}
     >
       <div
       //   mr={4}

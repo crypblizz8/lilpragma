@@ -33,13 +33,13 @@ export function Wallet() {
   }
 
   function walletConnect() {
-    web3Connect.activate(
+    activate(
       walletConnectConnector,
       (error) => {
         if (error instanceof UserRejectedRequestError) {
           // ignore user rejected error
         } else {
-          web3Connect.setError(error);
+          setError(error);
         }
       },
       false
