@@ -51,8 +51,6 @@ export default function Home({ getJourneysData }) {
 
   return (
     <div className={styles.container}>
-      {headContent}
-
       <main className={styles.main}>
         <h1 className="text-6xl">lil pragma</h1>
         {/* <h1 className="text-6xl sm:text-6xl">lil pragma</h1> */}
@@ -63,8 +61,6 @@ export default function Home({ getJourneysData }) {
         <h1 className="py-6 text-4xl">future lils</h1>
         {questContent(false)}
       </main>
-
-      {footerContent}
     </div>
   );
 }
