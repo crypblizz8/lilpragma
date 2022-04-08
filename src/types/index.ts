@@ -5,6 +5,7 @@ export interface Quest {
     description: string
     website?: string
     twitter?: string
+    available?: boolean
     tasks: Array<Task>
     reward?: 'none' | 'self-attest' | 'poap'
     params: { [key: string]: string | boolean | number | Array<string> }

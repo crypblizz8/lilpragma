@@ -7,7 +7,6 @@ import { Quest } from "../types/index";
 // <NextLink href={`/${journey.id}`} passHref>
 
 export default function QuestCards({ questData: Quest }) {
-  // console.log("questID", Quest.id);
   return (
     <Link href={`/${Quest.id}`} passHref>
       <div

@@ -24,24 +24,6 @@
           "amount": 0.1
         }
       }
-    },
-    {
-        "name": "$RARI token",
-        "description": "Buy and hold any amount of $RARI tokens in your wallet.",
-        "points": 100,
-        "verifier": "active-address"
-    },
-    {
-      "name": "ERC20: has ERC20 Token",
-      "description": "Own ERC20 Token. Using verifier `has-token-ERC20`",
-      "points": 400,
-      "verifier": {
-        "id": "has-token-ERC20",
-        "params": {
-          "tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-          "amount": 5
-        }
-      }
     }
   ]
 }

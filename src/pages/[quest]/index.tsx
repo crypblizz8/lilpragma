@@ -47,22 +47,14 @@ export default function QuestPage({ getQuestData }) {
   );
 
   const questDescriptionContent = (
-    <div className="flex flex-row">
+    <div className="flex flex-row item-start">
       <div className="flex flex-column">
         {/* <div className="max-w-[50%]"> */}
-        <div className="max-w-full">
+        <div>
+          {/* <div style={{ height: 250, width: 250, background: "gray" }} /> */}
           <h1 className="text-6xl">{quest.id}</h1>
-          <p className="py-6 text-xl text-slate-500">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget
-            mauris pharetra et ultrices neque ornare aenean. Porta non pulvinar
-            neque laoreet suspendisse interdum consectetur libero. Ut faucibus
-            pulvinar elementum integer enim neque volutpat.
-          </p>
+          <p className="py-6 text-xl text-slate-500">{quest.description}</p>
         </div>
-      </div>
-      <div className="flex-auto">
-        <div style={{ height: 250, width: 250, background: "gray" }} />
       </div>
     </div>
   );
@@ -83,10 +75,8 @@ export default function QuestPage({ getQuestData }) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const getJourneysData = getJourneys();
-  //   console.log("getJourneysData3", getJourneysData);
   return {
     paths: getJourneysData.map((i) => {
-    //   console.log("id", i.id);
       return { params: { quest: i.id } };
     }),
     fallback: false,
@@ -95,7 +85,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const journeyName = context.params?.quest;
-//console.log("journeyName", journeyName);
   if (!journeyName) {
     return {
       props: null,
@@ -112,7 +101,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       notFound: true,
     };
   }
-//   console.log("getJourneysData", getQuestData);
   return {
     props: {
       getQuestData,

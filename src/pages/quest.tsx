@@ -120,12 +120,9 @@ export default function Home() {
 }
 
 export async function getStaticProps() {
-  // const allQuestData = JSON.stringify(getQuestNames());
-  // const allQuestData = getQuestNames();
+
   const getJourneysData = getJourneys();
-  // console.log("getQuestNames", allQuestData);
-  // console.log("getQuestNames", allQuestData);
-  console.log("getJourneysData2", getJourneysData);
+
   return {
     props: {
       getJourneysData,
