@@ -26,7 +26,7 @@ export async function verifyScore(task: Task, address?: string | null) {
     return result
   }
 
-  const results = await Promise.all(task.verifier.map(async i => {
+  const results = await Promise.all(task?.verifier.map(async i => {
     const module = await import(`../verifiers/${i.id}`)
     const result: boolean | number = await module.verify(task, i, address)
 

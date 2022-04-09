@@ -4,12 +4,15 @@ import QuestCards from "../../components/QuestCards";
 import styles from "../../styles/Home.module.css";
 // import styles from "../../styles/Home.module.css";
 // import styles from "../styles/Home.module.css";
-import { Quest } from "../../types/index";
+import { Quest, Task } from "../../types/index";
 import questData from "../../quests/quests";
 import { getJourneys } from "../../quests/questData";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import TaskCard from "../../components/taskCard";
+import { useState, useEffect } from "react";
+import { verifyScore } from "../../utils/verifier";
+import { useWeb3React } from "@web3-react/core";
 
 // interface Props {
 //   quest: Quest;
@@ -17,6 +20,36 @@ import TaskCard from "../../components/taskCard";
 
 export default function QuestPage({ getQuestData }) {
   const quest = getQuestData;
+  const web3 = useWeb3React();
+
+  const [score, setScore] = useState(0);
+  const maxScore = quest?.tasks
+    .map((i) => i.points)
+    .reduce((acc, i) => acc + i, 0);
+
+  useEffect(() => {
+    async function getScore() {
+      let score = 0;
+
+      if (!quest) return;
+
+      await Promise.all(
+        quest.tasks.map(async (task: Task) => {
+          const result = await verifyScore(task, web3.account);
+          if (result && typeof result === "boolean") {
+            score += task.points;
+          }
+          if (result && typeof result === "number") {
+            score += result;
+          }
+        })
+      );
+
+      setScore(score);
+    }
+
+    getScore();
+  }, [quest.journey, web3.account]);
   // const [result, setResult] = useState<boolean | number | undefined>();
   // const web3 = useWeb3React();
   // const task = props.task;
@@ -31,19 +64,16 @@ export default function QuestPage({ getQuestData }) {
   //   verify();
   // }, [props.task, props.address, web3.account]);
 
-  const footerContent = (
-    <footer className={styles.footer}>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by{" "}
-        <span className={styles.logo}>
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </span>
-      </a>
-    </footer>
+  const questScore = (
+    <div className="flex flex-row item-start">
+      <div className="flex flex-column">
+        <div>
+          <p className="py-6 text-xl text-slate-500">
+            Score: {score} / {maxScore}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 
   const questDescriptionContent = (
@@ -63,6 +93,8 @@ export default function QuestPage({ getQuestData }) {
     <div className={styles.container}>
       <main className={styles.main}>
         {questDescriptionContent}
+        {questScore}
+
         <div className="flex flex-row flex-wrap w-5/6">
           {quest.tasks.map((e, i) => {
             return <TaskCard key={i} quest={e} />;

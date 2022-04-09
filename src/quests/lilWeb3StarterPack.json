@@ -1,7 +1,7 @@
 {
     "name": "lil Web3 Starter Pack",
     "version": 1,
-    "description": "Starter Pack to all the simple web3 tasks to",
+    "description": "Starter Pack to all the simple web3 tasks",
     "website": "https://rarible.org/",
     "twitter": "trypragma",
     "available": true,
@@ -22,6 +22,41 @@
         "id": "has-ETH",
         "params": {
           "amount": 0.1
+        }
+      }
+    },
+    {
+      "name": "Have MATIC in polygon wallet",
+      "description": "Own some MATIC on polygon. Using verifier `has-ETH`",
+      "points": 400,
+      "verifier": {
+        "id": "has-ETH",
+        "chainId": 137,
+        "params": {
+          "amount": 0.1
+        }
+      }
+    },
+    {
+      "name": "ERC20: has 0.01+ WETH Token",
+      "description": "Own 0.01+ WETH ERC20 Token. Using verifier `has-token-ERC20`",
+      "points": 400,
+      "verifier": {
+        "id": "has-token-ERC20",
+        "params": {
+          "tokenAddress": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "amount": 0.1
+        }
+      }
+    },
+    {
+      "name": "Own an ERC721 NFT",
+      "description": "Own an ENS NFT(ERC721). Using verifier `has-nft-ERC721`",
+      "points": 400,
+      "verifier": {
+        "id": "has-nft-ERC721",
+        "params": {
+          "tokenAddress": "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85"
         }
       }
     }

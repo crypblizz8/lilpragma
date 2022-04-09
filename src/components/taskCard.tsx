@@ -16,7 +16,6 @@ export default function TaskCard({ quest }) {
 
   useEffect(() => {
     async function verify() {
-      // console.log(quest.task);
       // console.log(web3.account);
       const result = await verifyScore(quest, web3.account);
 

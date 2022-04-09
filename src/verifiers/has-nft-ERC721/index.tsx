@@ -1,15 +1,14 @@
-// has-token-ERC20/index.ts
+// has-nft-ERC721/index.ts
 // Reminder:add in `.env.local`: NEXT_PUBLIC_ALCHEMY_API_KEY
 //
-// Usage: Task example for polygon(chainId 137). You can omit amount if you just want to check > 0.
+// Usage: Task example for polygon(chainId 137).
 // {
-//     "name": "has WETH on polygon",
-//     "description": "Own some WETH (Wrapped ETH, ERC20) on polygon.",
+//     "name": "has NFT on polygon",
+//     "description": "Own some ERC721 NFT on polygon.",
 //     "points": 100,
-//     "verifier": "has-token-ERC20",
+//     "verifier": "has-nft-ERC721",
 //     "params": {
-//          "tokenAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-//          "amount":0.1
+//          "tokenAddress": "0x7eb476Cd0fE5578106A01DC2f2E392895C6BC0A5",
 //     },
 //     "chainId":137
 //   }
@@ -29,20 +28,14 @@ export async function verify(
   const contractAddress = verifier.params["tokenAddress"].toString();
   if (!ethers.utils.isAddress(contractAddress)) return false;
 
-//   let decimal: number = 18; // Add Decimal Number. 
-  let amount: number = 0;
-  if ("amount" in verifier.params) amount = Number(verifier.params["amount"]);
   try {
     const provider = new AlchemyProvider(
       verifier.chainId || 1,
       process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
     );
     const contract = await new ethers.Contract(contractAddress, abi, provider);
-    const balanceOf = await contract.balanceOf(address);
-    // console.log("Amount", amount);
-    // console.log("Contract", contract);
-    // console.log("balanceOf", balanceOf / 1e18);
-    if (balanceOf / 1e18 > amount) return true;
+    const balanceOfNFT = await contract.balanceOf(address);
+    if (balanceOfNFT > 0) return true;
 
     return false;
   } catch (e) {
@@ -53,9 +46,9 @@ export async function verify(
 const abi = [
   {
     constant: true,
-    inputs: [{ name: "who", type: "address" }],
+    inputs: [{ internalType: "address", name: "owner", type: "address" }],
     name: "balanceOf",
-    outputs: [{ name: "", type: "uint256" }],
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     payable: false,
     stateMutability: "view",
     type: "function",
