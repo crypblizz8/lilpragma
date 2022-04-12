@@ -22,8 +22,8 @@ export default function Home({ getJourneysData }) {
     return (
       <div className="grid grid-cols-2 xs:gap-6 lg:gap-12 lg:grid-cols-3 ">
         {getJourneysData.map((e: Quest, i) => {
-          // if (enabledQuest && e.available) {
-          if (enabledQuest) {
+          if (enabledQuest && e.available) {
+            // if (enabledQuest) {
             <QuestCards key={i} questData={e} />;
             return <QuestCards key={i} questData={e} />;
           } else {
@@ -53,7 +53,7 @@ export default function Home({ getJourneysData }) {
   return (
     <div className={styles.container}>
       {/* <main className={styles.main}> */}
-      <h1 className="text-6xl text-center">lil pragma</h1>
+      <h1 className="text-4xl text-center">lil pragma</h1>
       {/* <h1 className="text-6xl sm:text-6xl">lil pragma</h1> */}
       <p className="py-6 text-xl text-center text-slate-500">
         smoll web3 projects with a lil dev score

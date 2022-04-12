@@ -21,7 +21,7 @@ export default function QuestCards({ questData: Quest }) {
           />
         </div>
         <div style={questCardStyles.bottomContainer as React.CSSProperties}>
-          <h2 className="text-xl m-0 p-0 text-white">{Quest.id}</h2>
+          <h2 className="text-xl m-0 p-0 text-white">{Quest.name}</h2>
           <p className="text-slate-200 p-0 m-0 text-xs">{Quest.description}</p>
         </div>
       </div>
@@ -29,8 +29,8 @@ export default function QuestCards({ questData: Quest }) {
   );
 }
 
-// Todo: Refactor for Tailwindf 
-// Had to rever to normal CSS because Tailwind was buggy. 
+// Todo: Refactor for Tailwindf
+// Had to rever to normal CSS because Tailwind was buggy.
 const questCardStyles = {
   questContainer: {
     display: "flex",

@@ -1,10 +1,11 @@
 {
     "name": "lil Web3 Starter Pack",
     "version": 1,
-    "description": "Starter Pack to all the simple web3 tasks",
+    "description": "Starter Pack to all the simple web3 tasks.",
     "website": "https://rarible.org/",
     "twitter": "trypragma",
     "available": true,
+    "creator": "https://twitter.com/fjun99",
     "tasks": [
     {
       "name": "Have a wallet address",
@@ -39,7 +40,7 @@
     },
     {
       "name": "ERC20: has 0.01+ WETH Token",
-      "description": "Own 0.01+ WETH ERC20 Token. Using verifier `has-token-ERC20`",
+      "description": "Own 0.01+ WETH ERC20 Token.",
       "points": 400,
       "verifier": {
         "id": "has-token-ERC20",
@@ -51,7 +52,7 @@
     },
     {
       "name": "Own an ERC721 NFT",
-      "description": "Own an ENS NFT(ERC721). Using verifier `has-nft-ERC721`",
+      "description": "Own an ENS NFT(ERC721).",
       "points": 400,
       "verifier": {
         "id": "has-nft-ERC721",

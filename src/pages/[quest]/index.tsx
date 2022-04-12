@@ -68,27 +68,38 @@ export default function QuestPage({ getQuestData }) {
     <div className="flex flex-row item-start">
       <div className="flex flex-column">
         <div>
-          <p className="py-4 text-xl text-slate-500">
-            Score: {score} / {maxScore}
-          </p>
+          <p className="py-2 text-xl text-slate-500"></p>
         </div>
       </div>
     </div>
   );
 
+  const twitterHandle = quest?.creator
+    ? quest?.creator.substring(quest?.creator.lastIndexOf("/") + 1)
+    : null;
+
   const questDescriptionContent = (
     <div className="flex flex-row item-start">
       <div className="flex flex-column">
         {/* <div className="max-w-[50%]"> */}
-        <div>
+        <div className="text-center ">
           {/* <div style={{ height: 250, width: 250, background: "gray" }} /> */}
-          <h1 className="text-6xl text-center">{quest.id}</h1>
-          <p className="py-6 text-xl text-slate-500">{quest.description}</p>
-          <div className="flex flex-row space-between border border-sky-200 place-content-between">
-            <p className="py-6 text-xl text-slate-500">Author</p>
-            <p className="py-6 text-xl text-slate-500">Website</p>
-            <p className="py-6 text-xl text-slate-500">Twitter</p>
-          </div>
+          <h1 className="text-4xl text-center">{quest.id}</h1>
+          <p className="py-4 text-xl text-center text-slate-500">
+            {quest.description}
+            <br />
+            Created by: {twitterHandle}
+          </p>
+          {/* <p className="text-xl text-slate-500">Created by: {twitterHandle}</p> */}
+          <button
+            onClick={() => window.open(quest?.creator)}
+            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold my-2 px-4 border border-gray-400 rounded shadow"
+          >
+            @{twitterHandle}
+          </button>
+          <p className="text-xl text-center text-slate-500 pb-6">
+            Score: {score} / {maxScore}
+          </p>
         </div>
       </div>
     </div>
@@ -98,9 +109,9 @@ export default function QuestPage({ getQuestData }) {
     <div className={styles.container}>
       <main className={styles.main} style={{ maxWidth: 1000 }}>
         {questDescriptionContent}
-        {questScore}
+        {/* {questScore} */}
 
-        <div className="grid grid-cols xs:gap-6 lg:gap-12 lg:grid-cols-3">
+        <div className="grid grid-cols xs:gap-6 lg:gap-6 lg:grid-cols-3">
           {quest.tasks.map((e, i) => {
             return <TaskCard key={i} quest={e} />;
           })}

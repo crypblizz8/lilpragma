@@ -16,10 +16,7 @@ export default function TaskCard({ quest }) {
 
   useEffect(() => {
     async function verify() {
-      // console.log(web3.account);
       const result = await verifyScore(quest, web3.account);
-
-      console.log(quest.name, result);
       setResult(result);
     }
 
@@ -27,12 +24,25 @@ export default function TaskCard({ quest }) {
   }, [quest.task, quest.address, web3.account]);
 
   return (
-    <div className="border border-sky-600 rounded rounded-xl flex flex-col">
+    <div
+      style={{ maxWidth: 250 }}
+      className="border border-neutral-400 max-w-200 rounded-xl flex flex-col"
+    >
       <div className="px-4">
-        <div className="flex border-indigo-500 border justify-end my-2">
-          <p> {result ? "Complete ✅" : "Incomplete⭕️"}</p>
+        <div className="flex justify-end my-2">
+          <div
+            className={
+              result
+                ? "bg-black p-1 rounded-xl"
+                : "border border-black p-1 rounded-xl"
+            }
+          >
+            <p className={result ? "text-white text-xs" : "text-xs"}>
+              {result ? "Complete" : "Incomplete"}
+            </p>
+          </div>
         </div>
-        <div className="border border-sky-600 flex justify-center item-center">
+        <div className="flex justify-center item-center">
           <div
             style={{
               height: 100,
@@ -43,18 +53,18 @@ export default function TaskCard({ quest }) {
           ></div>
         </div>
 
-        <div className="py-2">
-          <h1 className="text-xl font-medium">{quest.name}</h1>
-          <p>{quest.points} points</p>
-          <p style={{ minHeight: 50 }}>{quest.description}</p>
+        <div className="my-2 h-32">
+          <h1 className="text-xl font-medium m-0">{quest.name}</h1>
+          <p className="text-xs py-2">{quest.points} points</p>
+          <p className="text-xs">{quest.description}</p>
         </div>
       </div>
 
       <button
         onClick={() => window.open(quest.tutorial)}
-        className="flex rounded-b-2xl	border-indigo-500 border justify-center bg-black flex-grow py-4"
+        className="flex rounded-b-xl	justify-center bg-black flex-grow py-4"
       >
-        <p className="text-white"> View Tutorial</p>
+        <p className="text-white">View Tutorial</p>
       </button>
     </div>
   );
