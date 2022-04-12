@@ -26,7 +26,7 @@ export default function Layout(props: Props) {
     <>
       <Header />
       <main className={styles.main}>{props.children}</main>
-      {footerContent}
+      {/* {footerContent} */}
     </>
   );
 }

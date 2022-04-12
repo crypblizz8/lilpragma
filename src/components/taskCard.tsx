@@ -27,11 +27,35 @@ export default function TaskCard({ quest }) {
   }, [quest.task, quest.address, web3.account]);
 
   return (
-    <div className="flex flex-col rounded-2xl h-1/2 w-1/4  bg-red-400 m-2">
-      <h1>{quest.name}</h1>
-      <p>{quest.description}</p>
-      <p> {result ? "✅" : "⭕️"}</p>
-      <p>{quest.points}</p>
+    <div className="border border-sky-600 rounded rounded-xl flex flex-col">
+      <div className="px-4">
+        <div className="flex border-indigo-500 border justify-end my-2">
+          <p> {result ? "Complete ✅" : "Incomplete⭕️"}</p>
+        </div>
+        <div className="border border-sky-600 flex justify-center item-center">
+          <div
+            style={{
+              height: 100,
+              width: 100,
+              background: "red",
+              borderRadius: 100 / 2,
+            }}
+          ></div>
+        </div>
+
+        <div className="py-2">
+          <h1 className="text-xl font-medium">{quest.name}</h1>
+          <p>{quest.points} points</p>
+          <p style={{ minHeight: 50 }}>{quest.description}</p>
+        </div>
+      </div>
+
+      <button
+        onClick={() => window.open(quest.tutorial)}
+        className="flex rounded-b-2xl	border-indigo-500 border justify-center bg-black flex-grow py-4"
+      >
+        <p className="text-white"> View Tutorial</p>
+      </button>
     </div>
   );
 }

@@ -68,7 +68,7 @@ export default function QuestPage({ getQuestData }) {
     <div className="flex flex-row item-start">
       <div className="flex flex-column">
         <div>
-          <p className="py-6 text-xl text-slate-500">
+          <p className="py-4 text-xl text-slate-500">
             Score: {score} / {maxScore}
           </p>
         </div>
@@ -82,8 +82,13 @@ export default function QuestPage({ getQuestData }) {
         {/* <div className="max-w-[50%]"> */}
         <div>
           {/* <div style={{ height: 250, width: 250, background: "gray" }} /> */}
-          <h1 className="text-6xl">{quest.id}</h1>
+          <h1 className="text-6xl text-center">{quest.id}</h1>
           <p className="py-6 text-xl text-slate-500">{quest.description}</p>
+          <div className="flex flex-row space-between border border-sky-200 place-content-between">
+            <p className="py-6 text-xl text-slate-500">Author</p>
+            <p className="py-6 text-xl text-slate-500">Website</p>
+            <p className="py-6 text-xl text-slate-500">Twitter</p>
+          </div>
         </div>
       </div>
     </div>
@@ -91,11 +96,11 @@ export default function QuestPage({ getQuestData }) {
 
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <main className={styles.main} style={{ maxWidth: 1000 }}>
         {questDescriptionContent}
         {questScore}
 
-        <div className="flex flex-row flex-wrap w-5/6">
+        <div className="grid grid-cols xs:gap-6 lg:gap-12 lg:grid-cols-3">
           {quest.tasks.map((e, i) => {
             return <TaskCard key={i} quest={e} />;
           })}

@@ -1,4 +1,5 @@
-// import fs from "fs";
+{
+} // import fs from "fs";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/questCard.styles";
@@ -11,7 +12,13 @@ export default function QuestCards({ questData: Quest }) {
     <Link href={`/${Quest.id}`} passHref>
       <div style={questCardStyles.questContainer as React.CSSProperties}>
         <div style={questCardStyles.topContainer as React.CSSProperties}>
-          <div style={{ height: 100, width: 100, backgroundColor: "red" }} />
+          <Image
+            src={`/images/quests/${Quest?.id}.png`}
+            // src={require(Quest?.img).src}
+            alt={Quest.id}
+            height={100}
+            width={100}
+          />
         </div>
         <div style={questCardStyles.bottomContainer as React.CSSProperties}>
           <h2 className="text-xl m-0 p-0 text-white">{Quest.id}</h2>
@@ -22,19 +29,16 @@ export default function QuestCards({ questData: Quest }) {
   );
 }
 
-// Had to rever to normal CSS because Tailwind was buggy.
+// Todo: Refactor for Tailwindf 
+// Had to rever to normal CSS because Tailwind was buggy. 
 const questCardStyles = {
   questContainer: {
     display: "flex",
-    // height: "100%",
-    // position: "relative",
     flexDirection: "column",
     borderRadius: 16,
-    // alignItems: "stretch",
     borderWidth: 1,
     borderColor: "rgb(191, 191, 191)",
     maxWidth: 200,
-    // flexGrow: 1,
   },
   topContainer: {
     padding: "1em",
@@ -45,18 +49,15 @@ const questCardStyles = {
   },
   bottomContainer: {
     height: "100%",
-    // height: 200,
     padding: "0.5em",
     display: "flex",
     flexDirection: "column",
-    // alignItems: "stretch",
     flexGrow: 1,
 
     backgroundColor: "#242424",
     borderColor: "rgb(0,0,0,0)",
     borderBottomLeftRadius: "1em",
     borderBottomRightRadius: "1em",
-    // inlineSize: "80%",
     overflowWrap: "break-word",
   },
 };

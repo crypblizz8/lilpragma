@@ -90,7 +90,7 @@ export function Wallet() {
         alignItems: "center",
         border: "1px solid red",
         position: "absolute",
-        bottom: -200,
+        bottom: 100,
         // left: 100,
       }}
     >

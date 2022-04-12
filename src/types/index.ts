@@ -6,6 +6,7 @@ export interface Quest {
     website?: string
     twitter?: string
     available?: boolean
+    img?: string
     tasks: Array<Task>
     reward?: 'none' | 'self-attest' | 'poap'
     params: { [key: string]: string | boolean | number | Array<string> }

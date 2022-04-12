@@ -4,6 +4,8 @@ const { truncate } = require('fs');
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    // formats:[]
+    disableStaticImages: true,
     domains:["cdn.allthings.how", ]
   },
   future: {

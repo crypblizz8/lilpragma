@@ -8,7 +8,8 @@
     "tasks": [
     {
             "name": "Create a Web3 wallet",
-            "description": "Visit https://ethereum.org/wallets and install a wallet to start your journey.",
+            "description": "Install a web3 wallet to start your journey.",
+            "tutorial": "https://ethereum.org/wallets",
             "points": 100,
             "verifier": {
                 "id": "active-address"

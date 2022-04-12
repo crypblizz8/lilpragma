@@ -5,9 +5,5 @@ import { Wallet } from "./wallet";
 // import journey from "pages/api/journey";
 
 export default function Header() {
-  return (
-    <div>
-      <Wallet />
-    </div>
-  );
+  return <div>{/* <Wallet /> */}</div>;
 }
