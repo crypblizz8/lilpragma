@@ -20,15 +20,17 @@ export default function Home({ getJourneysData }) {
 
   const questContent = (enabledQuest: boolean) => {
     return (
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
+      <div className="grid grid-cols-2 gap-8 lg:grid-cols-3 ">
         {getJourneysData.map((e: Quest, i) => {
-          if (enabledQuest && e.available) {
-            return <QuestCards key={i} questData={e} />;
-          } else if (enabledQuest === false && !e.available) {
-            return <QuestCards key={i} questData={e} />;
-          } else {
-            return null;
-          }
+          // if (enabledQuest && e.available) {
+          //   <QuestCards key={i} questData={e} />;
+          //   return <QuestCards key={i} questData={e} />;
+          // } else if (enabledQuest === false && !e.available) {
+          //   return <QuestCards key={i} questData={e} />;
+          // } else {
+          //   return null;
+          // }
+          return <QuestCards key={i} questData={e} />;
         })}
       </div>
     );
@@ -51,16 +53,17 @@ export default function Home({ getJourneysData }) {
 
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
-        <h1 className="text-6xl">lil pragma</h1>
-        {/* <h1 className="text-6xl sm:text-6xl">lil pragma</h1> */}
-        <p className="py-6 text-2xl text-slate-500">
-          smoll web3 projects with a lil dev score
-        </p>
-        {questContent(true)}
-        <h1 className="py-6 text-4xl">future lils</h1>
-        {questContent(false)}
-      </main>
+      {/* <main className={styles.main}> */}
+      <h1 className="text-4xl text-center">lil pragma</h1>
+      {/* <h1 className="text-6xl sm:text-6xl">lil pragma</h1> */}
+      <p className="py-4 text-xl text-center text-slate-500">
+        smoll web3 projects with a lil dev score
+      </p>
+      {questContent(true)}
+    
+      <div className="py-6"></div>
+      {/* {questContent(false)} */}
+      {/* </main> */}
     </div>
   );
 }

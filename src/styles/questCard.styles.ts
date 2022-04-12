@@ -15,7 +15,10 @@ export default {
         'm-4',
     ].join(' '),
     questTextContainer: [
-        'bg-black'
+        'rounded-b-2xl',
+        'border border-indigo-500',
+        'flex',
+        'flex-col',
     ].join(' ')
 
 }

@@ -70,15 +70,39 @@ export function Wallet() {
   );
 
   return (
-    <div>
-      <nav className="flex items-center justify-end flex-wrap p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6"></div>
-        <div className="w-full block flex-grow lg:flex lg:items-end lg:w-auto xs:justify-end">
-          <div className="text-sm lg:flex-grow"></div>
-          <div>
-            <DropDownMenu disconnect={disconnect} connect={connect} />
-          </div>
-        </div>
+    // <div>
+    //   <nav className="flex items-center flex-wrap p-6 border border-sky-600">
+    //     {/* <div className="flex xs:items-center flex-shrink-0 mr-6 text-xl ">
+    //       lil pragma
+    //     </div> */}
+    //     <div className="w-full block  flex-grow lg:flex lg:items-end lg:w-auto xs:justify-end">
+    //       {/* <div>
+    //         <DropDownMenu disconnect={disconnect} connect={connect} />
+    //       </div> */}
+    //     </div>
+    //   </nav>
+    // </div>
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        border: "1px solid red",
+        position: "absolute",
+        bottom: -200,
+        // left: 100,
+      }}
+    >
+      <nav
+        style={{
+          borderRadius: 20,
+          backgroundColor: "black",
+          width: 200,
+          height: 40,
+        }}
+      >
+        <DropDownMenu disconnect={disconnect} connect={connect} />
       </nav>
     </div>
   );
