@@ -21,7 +21,7 @@ export default function TaskCard({ quest }) {
     }
 
     verify();
-  }, [quest.task, quest.address, web3.account]);
+  }, [quest.task, quest.address, web3.account, quest]);
 
   return (
     <div

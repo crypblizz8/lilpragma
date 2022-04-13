@@ -7,7 +7,7 @@ import styles from "../../styles/Home.module.css";
 import { Quest, Task } from "../../types/index";
 import questData from "../../quests/quests";
 import { getJourneys } from "../../quests/questData";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { Params } from "next/dist/server/router";
 import TaskCard from "../../components/taskCard";
 import { useState, useEffect } from "react";
@@ -20,6 +20,7 @@ import { useWeb3React } from "@web3-react/core";
 
 export default function QuestPage({ getQuestData }) {
   const quest = getQuestData;
+  console.log("questPage", quest);
   const web3 = useWeb3React();
 
   const [score, setScore] = useState(0);
@@ -132,27 +133,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const journeyName = context.params?.quest;
-  console.log("GetStaticProps journeyName", journeyName);
-  if (!journeyName) {
+  const questName = context.params?.quest;
+
+  if (!questName) {
     return {
       props: null,
       notFound: true,
     };
   }
 
-  const getQuestData = getJourneys().find(
-    (i) => i.id.toLowerCase() === journeyName
-  );
-  if (!getQuestData) {
+  const quest = getJourneys().find((i) => i.id.toLowerCase() === questName);
+
+  if (!quest) {
     return {
       props: null,
       notFound: true,
     };
   }
+
   return {
     props: {
-      getQuestData,
+      quest,
     },
     revalidate: 3600,
   };

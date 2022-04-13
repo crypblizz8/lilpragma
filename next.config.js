@@ -3,6 +3,7 @@ const { truncate } = require('fs');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  assetPrefix: '',
   images: {
     // formats:[]
     disableStaticImages: true,

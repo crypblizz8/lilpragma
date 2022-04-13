@@ -5,11 +5,14 @@ import Image from "next/image";
 import styles from "../styles/questCard.styles";
 import { Quest } from "../types/index";
 
-// <NextLink href={`/${journey.id}`} passHref>
-
 export default function QuestCards({ questData: Quest }) {
   return (
-    <Link href={`/${Quest.id}`} passHref>
+    <Link
+      // href={`/?uri=${Quest.id}`}
+      as={`/${Quest.id}`}
+      href={`/${Quest.id}`}
+      passHref
+    >
       <div style={questCardStyles.questContainer as React.CSSProperties}>
         <div style={questCardStyles.topContainer as React.CSSProperties}>
           <Image

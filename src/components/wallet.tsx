@@ -12,24 +12,32 @@ import {
 import { UserRejectedRequestError } from "@web3-react/injected-connector";
 import DropDownMenu from "./dropDownMenu";
 
-export function Wallet() {
+export default function Wallet() {
   useInitialConnect();
-  const { account, activate, active, deactivate, setError } = useWeb3React();
+  const { account, activate, active, chainId, deactivate, setError } =
+    useWeb3React();
 
-  useEffect(() => {}, [active]);
+  useEffect(() => {
+    console.log("useEffect active", active);
+  }, [active]);
 
   async function connect() {
-    activate(
-      injected,
-      (error) => {
-        if (error instanceof UserRejectedRequestError) {
-          // ignore user rejected error
-        } else {
-          setError(error);
-        }
-      },
-      false
-    );
+    try {
+      console.log("connecting..");
+      activate(
+        injected,
+        (error) => {
+          if (error instanceof UserRejectedRequestError) {
+            // ignore user rejected error
+          } else {
+            setError(error);
+          }
+        },
+        false
+      );
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   function walletConnect() {
@@ -48,62 +56,19 @@ export function Wallet() {
 
   async function disconnect() {
     try {
+      console.log("Signed Out");
       deactivate();
     } catch (ex) {
       console.log(ex);
     }
   }
 
-  {
-    /* {web3Connect.error && <p>{web3Connect.error.name}: {web3Connect.error.message}</p>} */
-  }
-
-  const notConnectedWallet = (
-    <div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={connect}
-      >
-        Connect
-      </button>
-    </div>
-  );
-
   return (
-    // <div>
-    //   <nav className="flex items-center flex-wrap p-6 border border-sky-600">
-    //     {/* <div className="flex xs:items-center flex-shrink-0 mr-6 text-xl ">
-    //       lil pragma
-    //     </div> */}
-    //     <div className="w-full block  flex-grow lg:flex lg:items-end lg:w-auto xs:justify-end">
-    //       {/* <div>
-    //         <DropDownMenu disconnect={disconnect} connect={connect} />
-    //       </div> */}
-    //     </div>
-    //   </nav>
-    // </div>
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        border: "1px solid red",
-        position: "absolute",
-        bottom: 100,
-        // left: 100,
-      }}
-    >
-      <nav
-        style={{
-          borderRadius: 20,
-          backgroundColor: "black",
-          width: 200,
-          height: 40,
-        }}
-      >
+    <div className="flex items-center flex-wrap p-6">
+      <div className="w-full block  flex-grow lg:flex lg:items-end lg:w-auto xs:justify-end">
+        <div className="m-2 mx-4">{getNetworkName(chainId)}</div>
         <DropDownMenu disconnect={disconnect} connect={connect} />
-      </nav>
+      </div>
     </div>
   );
 }
