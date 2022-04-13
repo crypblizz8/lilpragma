@@ -7,12 +7,7 @@ import { Quest } from "../types/index";
 
 export default function QuestCards({ questData: Quest }) {
   return (
-    <Link
-      // href={`/?uri=${Quest.id}`}
-      as={`/${Quest.id}`}
-      href={`/${Quest.id}`}
-      passHref
-    >
+    <Link href={`/${Quest.id}`} passHref>
       <div style={questCardStyles.questContainer as React.CSSProperties}>
         <div style={questCardStyles.topContainer as React.CSSProperties}>
           <Image
