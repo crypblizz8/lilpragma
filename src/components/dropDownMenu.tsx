@@ -34,7 +34,6 @@ const svgIcon = (
 
 export default function DropDownMenu({ disconnect, connect }) {
   const { account, active, chainId } = useWeb3React();
-  console.log("DropDownMenu active", active);
 
   return (
     <>
