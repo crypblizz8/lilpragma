@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { join } from 'path'
+import { Quest } from '../types'
 
 const baseFolder = 'src/quests'
 
@@ -24,7 +25,7 @@ export function getJourneys(): any {
         }
         
         if (content) {
-            let journey = JSON.parse(content) as Journey 
+            let journey = JSON.parse(content) as Quest 
             return {
                 ...journey,
                 id: i.name.replace('.json', '')

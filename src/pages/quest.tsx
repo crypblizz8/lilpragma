@@ -1,11 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import QuestCards from "../components/QuestCards";
+import QuestCards from "../components/questCards";
 import styles from "../styles/Home.module.css";
-// import styles from "../../styles/Home.module.css";
-// import styles from "../styles/Home.module.css";
+
 import { Quest } from "../types/index";
-import questData from "../quests/quests";
+// import questData from "../quests/quests";
 import { getQuestNames, getJourneys } from "../quests/questData";
 
 export default function Home() {
@@ -17,13 +16,13 @@ export default function Home() {
     </Head>
   );
 
-  const questContent = (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
-      {questData.map((e: Quest, i) => {
-        return <QuestCards key={i} questData={e} />;
-      })}
-    </div>
-  );
+  // const questContent = (
+  //   <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
+  //     {questData.map((e: Quest, i) => {
+  //       return <QuestCards key={i} questData={e} />;
+  //     })}
+  //   </div>
+  // );
 
   const footerContent = (
     <footer className={styles.footer}>
@@ -120,7 +119,6 @@ export default function Home() {
 }
 
 export async function getStaticProps() {
-
   const getJourneysData = getJourneys();
 
   return {

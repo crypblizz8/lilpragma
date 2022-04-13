@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import QuestCards from "../../components/QuestCards";
+// import QuestCards from "../../components/QuestCards";
 import styles from "../../styles/Home.module.css";
 // import styles from "../../styles/Home.module.css";
 // import styles from "../styles/Home.module.css";
@@ -133,6 +133,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const journeyName = context.params?.quest;
+  console.log("GetStaticProps journeyName", journeyName);
   if (!journeyName) {
     return {
       props: null,
@@ -141,7 +142,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   const getQuestData = getJourneys().find(
-    (i) => i.id.toLowerCase() === journeyName.toLowerCase()
+    (i) => i.id.toLowerCase() === journeyName
   );
   if (!getQuestData) {
     return {
