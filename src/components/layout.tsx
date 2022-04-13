@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import NextLink from "next/link";
 import Head from "next/head";
-import { Wallet } from "./wallet";
+// import { Wallet } from "./wallet";
 import styles from "../styles/Home.module.css";
 import Header from "./header";
 
