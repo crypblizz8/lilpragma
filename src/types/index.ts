@@ -2,14 +2,16 @@ export interface Quest {
     id: string
     name: string
     version: number
+    order: number
     description: string
     website?: string
     twitter?: string
     available?: boolean
     img?: string
+    emoji?: string
     tasks: Array<Task>
     reward?: 'none' | 'self-attest' | 'poap'
-    params: { [key: string]: string | boolean | number | Array<string> }
+    // params: { [key: string]: string | boolean | number | Array<string> }
 }
 
 export interface Task {

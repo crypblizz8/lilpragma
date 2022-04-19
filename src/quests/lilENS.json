@@ -1,6 +1,7 @@
 {
     "name": "lil ENS",
     "version": 1,
+    "order": 5,
     "description": "Make a simple ENS",
     "website": "https://rarible.org/",
     "twitter": "raribledao",

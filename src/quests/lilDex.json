@@ -1,6 +1,7 @@
 {
     "name": "lil dex",
     "version": 1,
+    "order": 4,
     "description": "Make a simple DEX",
     "website": "https://rarible.org/",
     "twitter": "raribledao",

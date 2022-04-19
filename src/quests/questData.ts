@@ -27,11 +27,14 @@ export function getJourneys(): any {
         if (content) {
             let journey = JSON.parse(content) as Quest 
             return {
-                ...journey,
+                ...journey, 
                 id: i.name.replace('.json', '')
             }
         }
-    }).filter(i => !!i) as any
+    }).sort(function (a, b) {
+        console.log(a, b)
+        return a.order - b.order
+    }) as any
     
     return items
 }

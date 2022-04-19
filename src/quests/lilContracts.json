@@ -1,6 +1,7 @@
 {
     "name": "lil Contracts",
     "version": 1,
+    "order": 2,
     "description": "Deploying your first Smart Contracts",
     "website": "https://rarible.org/",
     "twitter": "raribledao",
@@ -12,6 +13,7 @@
             "description": "Install a web3 wallet to start your journey.",
             "tutorial": "https://ethereum.org/wallets",
             "points": 100,
+            "emoji": "wallet",
             "verifier": {
                 "id": "active-address"
         }
@@ -20,6 +22,7 @@
             "name": "Training wheels",
             "description": "Deploy any kind of contract to the Ropsten test network.",
             "points": 20,
+            "emoji": "redCircle",
             "verifier": {
                 "id": "deployed-contract",
                 "chainId": 3
@@ -29,6 +32,7 @@
             "name": "Tests, tests everywhere",
             "description": "Deploy any kind of contract to the Rinkeby test network.",
             "points": 20,
+            "emoji": "yellowCircle",
             "verifier": {
                 "id": "deployed-contract",
                 "chainId": 4

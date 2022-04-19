@@ -8,19 +8,22 @@ import { Quest, Task } from "../../types/index";
 import questData from "../../quests/quests";
 import { getJourneys } from "../../quests/questData";
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
-import { Params } from "next/dist/server/router";
 import TaskCard from "../../components/taskCard";
 import { useState, useEffect } from "react";
 import { verifyScore } from "../../utils/verifier";
 import { useWeb3React } from "@web3-react/core";
+import { ParsedUrlQuery } from "querystring";
 
-// interface Props {
-//   quest: Quest;
-// }
+interface Props {
+  quest: Quest;
+}
+
+interface Params extends ParsedUrlQuery {
+  quest: string;
+}
 
 export default function QuestPage({ getQuestData }) {
   const quest = getQuestData;
-  console.log("questPage", quest);
   const web3 = useWeb3React();
 
   const [score, setScore] = useState(0);
@@ -86,21 +89,23 @@ export default function QuestPage({ getQuestData }) {
         <div className="text-center ">
           {/* <div style={{ height: 250, width: 250, background: "gray" }} /> */}
           <h1 className="text-4xl text-center">{quest.id}</h1>
-          <p className="py-4 text-xl text-center text-slate-500">
+          <p className="text-xl text-center text-slate-500 pt-4">
             {quest.description}
             <br />
             Created by: {twitterHandle}
           </p>
-          {/* <p className="text-xl text-slate-500">Created by: {twitterHandle}</p> */}
-          <button
-            onClick={() => window.open(quest?.creator)}
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold my-2 px-4 border border-gray-400 rounded shadow"
-          >
-            @{twitterHandle}
-          </button>
-          <p className="text-xl text-center text-slate-500 pb-6">
+          <p className="text-xl text-center text-slate-500">
             Score: {score} / {maxScore}
           </p>
+          <a onClick={() => window.open(quest?.creator)} style={{ margin: 32 }}>
+            <Image
+              className="my-4"
+              src="/twitterLogo.svg"
+              alt="Vercel Logo"
+              width={60}
+              height={30}
+            />
+          </a>
         </div>
       </div>
     </div>
@@ -121,6 +126,7 @@ export default function QuestPage({ getQuestData }) {
     </div>
   );
 }
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const getJourneysData = getJourneys();
   return {
@@ -131,7 +137,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
   const journeyName = context.params?.quest;
   if (!journeyName) {
     return {

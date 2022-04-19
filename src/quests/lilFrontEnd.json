@@ -1,6 +1,7 @@
 {
     "name": "lil Front End",
     "version": 1,
+    "order": 3,
     "description": "Simple frontend tutorials",
     "website": "https://rarible.org/",
     "twitter": "raribledao",
@@ -11,35 +12,6 @@
         "description": "Visit https://ethereum.org/wallets and install a wallet to start your journey.",
         "points": 100,
         "verifier": "active-address"
-    },
-    {
-        "name": "$RARI token",
-        "description": "Buy and hold any amount of $RARI tokens in your wallet.",
-        "points": 100,
-        "verifier": "active-address"
-    },
-    {
-        "name": "Create collectible(s)",
-        "description": "Create any collectible(s) on the Rarible platform https://rarible.com/create",
-        "points": 250,
-        "verifier": "test-always-false"
-    },
-    {
-        "name": "Sold any collectible(s)",
-        "description": "Sell any created collectible(s) on the Rarible platform.",
-        "points": 500,
-        "verifier": "test-always-false"
-    },
-    {
-        "name": "Buy collectible(s)",
-        "description": "Buy any amount of collectible(s) on the Rarible platform https://rarible.com/",
-        "points": 100,
-        "verifier": "test-random-number"
-    },
-    {
-        "name": "Rarible OG",
-        "description": "Extra points if you've bought any collectible(s) more than 1 year ago",
-        "points": 1000,
-        "verifier": "active-address"
-    }]
+    }
+    ]
 }

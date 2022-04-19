@@ -19,6 +19,7 @@ export default function TaskCard({ quest }) {
       const result = await verifyScore(quest, web3.account);
       setResult(result);
     }
+    console.log("emoji", quest.description);
 
     verify();
   }, [quest.task, quest.address, web3.account, quest]);
@@ -33,7 +34,7 @@ export default function TaskCard({ quest }) {
           <div
             className={
               result
-                ? "bg-black p-1 rounded-xl"
+                ? "bg-black p-1 px-2 rounded-xl"
                 : "border border-black p-1 rounded-xl"
             }
           >
@@ -45,12 +46,25 @@ export default function TaskCard({ quest }) {
         <div className="flex justify-center item-center">
           <div
             style={{
-              height: 100,
-              width: 100,
-              background: "red",
-              borderRadius: 100 / 2,
+              height: 75,
+              width: 75,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              // background: "red",
+              borderRadius: 75 / 2,
+              border: "1px solid grey",
             }}
-          ></div>
+          >
+            <Image
+              // src={"/images/tasks/wallet.png"}
+              // src={quest?.emoji}
+              src={`/images/tasks/${quest?.emoji}.png`}
+              alt="Vercel Logo"
+              width={45}
+              height={45}
+            />
+          </div>
         </div>
 
         <div className="my-2 h-32">

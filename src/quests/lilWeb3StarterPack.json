@@ -1,6 +1,7 @@
 {
     "name": "lil Web3 Starter Pack",
     "version": 1,
+    "order": 1,
     "description": "Starter Pack to all the simple web3 tasks.",
     "website": "https://rarible.org/",
     "twitter": "trypragma",
@@ -11,6 +12,8 @@
       "name": "Have a wallet address",
       "description": "You need a wallet address to enter Web3 universe.",
       "points": 100,
+      "tutorial": "https://ethereum.org/wallets",
+      "emoji": "wallet",
       "verifier": {
         "id": "active-address"
       }
@@ -19,6 +22,7 @@
       "name": "Have ETH in wallet",
       "description": "Own some ETH. Using verifier `has-ETH`",
       "points": 400,
+      "emoji": "ethLogo",
       "verifier": {
         "id": "has-ETH",
         "params": {
@@ -30,6 +34,7 @@
       "name": "Have MATIC in polygon wallet",
       "description": "Own some MATIC on polygon. Using verifier `has-ETH`",
       "points": 400,
+      "emoji": "polygonLogo",
       "verifier": {
         "id": "has-ETH",
         "chainId": 137,
@@ -42,6 +47,7 @@
       "name": "ERC20: has 0.01+ WETH Token",
       "description": "Own 0.01+ WETH ERC20 Token.",
       "points": 400,
+      "emoji": "ERC20",
       "verifier": {
         "id": "has-token-ERC20",
         "params": {
@@ -54,6 +60,7 @@
       "name": "Own an ERC721 NFT",
       "description": "Own an ENS NFT(ERC721).",
       "points": 400,
+      "emoji": "ERC721",
       "verifier": {
         "id": "has-nft-ERC721",
         "params": {

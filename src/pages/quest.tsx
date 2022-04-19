@@ -22,7 +22,7 @@ export default function Home() {
   //       return <QuestCards key={i} questData={e} />;
   //     })}
   //   </div>
-  // );
+  // ); 
 
   const footerContent = (
     <footer className={styles.footer}>
