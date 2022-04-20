@@ -34,7 +34,7 @@ export const walletConnectConnector = new WalletConnectConnector({
 
 
 export function getProvider(provider: ExternalProvider | JsonRpcFetchFunc) {
-    console.log(provider);
+    // console.log(provider);
     return new Web3Provider(provider);
 }
 
