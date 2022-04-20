@@ -36,20 +36,6 @@ export async function verifyScore(task: Task, address?: string | null) {
   return results.some(i => i)
 }
 
-export async function allowMint(quest: Quest, address: string) {
-  let minScore = 0
-  if (quest.params && quest.params['minScore']) {
-    minScore = quest.params['minScore'] as number
-  }
-  else {
-    // max possible score
-    minScore = quest.tasks.map(i => i.points).reduce((acc, i) => acc + i, 0)
-  }
-
-  const score = await verifyQuestScore(quest, address)
-  return score >= minScore
-}
-
 export function getChainId(task: Task): number {
   if (!Array.isArray(task.verifier)) {
     return task.verifier.chainId ?? 1

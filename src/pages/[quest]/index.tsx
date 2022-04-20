@@ -102,7 +102,7 @@ export default function QuestPage({ getQuestData }) {
 
         <div className="grid grid-cols xs:gap-6 lg:gap-6 lg:grid-cols-3">
           {quest.tasks.map((e, i) => {
-            return <TaskCard key={i} quest={e} id={quest.id} />;
+            return <TaskCard key={i} quest={e} />;
           })}
         </div>
       </main>
@@ -120,9 +120,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<Props, Params> = async (
-  context
-) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const journeyName = context.params?.quest;
   if (!journeyName) {
     return {
@@ -132,7 +130,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (
   }
 
   const getQuestData = getJourneys().find(
-    (i) => i.id.toLowerCase() === journeyName.toLowerCase()
+    (i) => i.id.toLowerCase() === journeyName.toString().toLowerCase()
   );
   if (!getQuestData) {
     return {
