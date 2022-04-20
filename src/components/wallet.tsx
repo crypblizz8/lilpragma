@@ -27,7 +27,11 @@ export default function Wallet() {
         (error) => {
           if (error instanceof UserRejectedRequestError) {
             // ignore user rejected error
+            walletConnect();
           } else {
+            walletConnect();
+
+            console.log("error..");
             setError(error);
           }
         },
