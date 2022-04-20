@@ -34,9 +34,8 @@ const svgIcon = (
 
 export default function DropDownMenu({ disconnect, connect, walletConnect }) {
   const { account, active, chainId } = useWeb3React();
-  const isMobile =
-    "ontouchstart" in document.documentElement &&
-    /mobi/i.test(navigator.userAgent);
+  // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  // console.log("isMobile", isMobile);
 
   return (
     <>
@@ -44,7 +43,8 @@ export default function DropDownMenu({ disconnect, connect, walletConnect }) {
         <Menu
           as="div"
           className="relative max-w-[50%] flex text-left"
-          onClick={!isMobile ? connect : walletConnect}
+          // onClick={!isMobile ? connect : walletConnect}
+          onClick={connect}
         >
           <button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             Connect
