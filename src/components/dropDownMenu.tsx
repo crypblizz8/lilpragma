@@ -55,11 +55,10 @@ export default function DropDownMenu({ disconnect, connect, walletConnect }) {
             Connect
             {svgIcon}
           </Menu.Button>
-
           <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
-                <button
+                <Menu.Button
                   onClick={connect}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
@@ -67,10 +66,10 @@ export default function DropDownMenu({ disconnect, connect, walletConnect }) {
                   )}
                 >
                   Metamask
-                </button>
+                </Menu.Button>
               </Menu.Item>
               <Menu.Item>
-                <button
+                <Menu.Button
                   onClick={walletConnect}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
@@ -78,7 +77,7 @@ export default function DropDownMenu({ disconnect, connect, walletConnect }) {
                   )}
                 >
                   WalletConnect
-                </button>
+                </Menu.Button>
               </Menu.Item>
             </div>
           </Menu.Items>
