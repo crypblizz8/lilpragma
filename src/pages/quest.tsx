@@ -110,7 +110,6 @@ export default function Home() {
       {headContent}
       <main className={styles.main}>
         {questDescriptionContent}
-        {/* {introductionContent()} */}
         {mainQuestContent()}
       </main>
       {footerContent}

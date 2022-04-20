@@ -52,31 +52,10 @@ export default function QuestPage({ getQuestData }) {
       setScore(score);
     }
 
+    console.log("quest.name", quest.name);
+
     getScore();
   }, [quest.journey, web3.account]);
-  // const [result, setResult] = useState<boolean | number | undefined>();
-  // const web3 = useWeb3React();
-  // const task = props.task;
-
-  // useEffect(() => {
-  //   async function verify() {
-  //     const result = await verifyScore(props.task, web3.account);
-
-  //     setResult(result);
-  //   }
-
-  //   verify();
-  // }, [props.task, props.address, web3.account]);
-
-  const questScore = (
-    <div className="flex flex-row item-start">
-      <div className="flex flex-column">
-        <div>
-          <p className="py-2 text-xl text-slate-500"></p>
-        </div>
-      </div>
-    </div>
-  );
 
   const twitterHandle = quest?.creator
     ? quest?.creator.substring(quest?.creator.lastIndexOf("/") + 1)
@@ -85,9 +64,7 @@ export default function QuestPage({ getQuestData }) {
   const questDescriptionContent = (
     <div className="flex flex-row item-start">
       <div className="flex flex-column">
-        {/* <div className="max-w-[50%]"> */}
         <div className="text-center ">
-          {/* <div style={{ height: 250, width: 250, background: "gray" }} /> */}
           <h1 className="text-4xl text-center">{quest.id}</h1>
           <p className="text-xl text-center text-slate-500 pt-4">
             {quest.description}
@@ -97,15 +74,21 @@ export default function QuestPage({ getQuestData }) {
           <p className="text-xl text-center text-slate-500">
             Score: {score} / {maxScore}
           </p>
-          <a onClick={() => window.open(quest?.creator)} style={{ margin: 32 }}>
-            <Image
-              className="my-4"
-              src="/twitterLogo.svg"
-              alt="Vercel Logo"
-              width={60}
-              height={30}
-            />
-          </a>
+          <p className="text text-center text-slate-500 italic">
+            {quest.name === "lil Front End"
+              ? "Verifiers to be added soon"
+              : null}
+          </p>
+          <div className="my-4">
+            <a onClick={() => window.open(quest?.creator)}>
+              <Image
+                src="/twitterLogo.svg"
+                alt="Vercel Logo"
+                width={60}
+                height={30}
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -119,7 +102,7 @@ export default function QuestPage({ getQuestData }) {
 
         <div className="grid grid-cols xs:gap-6 lg:gap-6 lg:grid-cols-3">
           {quest.tasks.map((e, i) => {
-            return <TaskCard key={i} quest={e} />;
+            return <TaskCard key={i} quest={e} id={quest.id} />;
           })}
         </div>
       </main>

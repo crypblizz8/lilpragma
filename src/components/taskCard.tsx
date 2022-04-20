@@ -19,7 +19,6 @@ export default function TaskCard({ quest }) {
       const result = await verifyScore(quest, web3.account);
       setResult(result);
     }
-    console.log("emoji", quest.description);
 
     verify();
   }, [quest.task, quest.address, web3.account, quest]);
@@ -80,6 +79,16 @@ export default function TaskCard({ quest }) {
       >
         <p className="text-white">View Tutorial</p>
       </button>
+
+      {/* // ToDo: Include the route layout once tested.
+      <div className="flex rounded-b-xl	justify-center bg-black flex-grow py-4">
+        <Link
+          href={{ pathname: `${id}/${quest.verifier.id}`, query: quest }}
+          passHref
+        >
+          <p className="text-white">View Tutorial</p>
+        </Link>
+      </div> */}
     </div>
   );
 }

@@ -32,7 +32,6 @@ export function getJourneys(): any {
             }
         }
     }).sort(function (a, b) {
-        console.log(a, b)
         return a.order - b.order
     }) as any
     

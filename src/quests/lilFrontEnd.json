@@ -2,16 +2,45 @@
     "name": "lil Front End",
     "version": 1,
     "order": 3,
-    "description": "Simple frontend tutorials",
+    "description": "Build simple web3 frontend interfaces. ",
     "website": "https://rarible.org/",
     "twitter": "raribledao",
     "available": true,
     "creator": "https://twitter.com/crypblizz",
-    "tasks": [{
-        "name": "Create a Web3 wallet",
-        "description": "Visit https://ethereum.org/wallets and install a wallet to start your journey.",
-        "points": 100,
-        "verifier": "active-address"
+    "tasks": [
+    {
+        "name": "Interact with Uniswap",
+        "description": "Swap some Rinekby ETH on Uniswap",
+        "tutorial": "https://www.youtube.com/watch?v=JSp6wTyOGEQ",
+        "points": 0,
+        "emoji": "ethLogo",
+        "verifier": {
+        "id": "has-token-ERC20",
+        "params": {
+          "tokenAddress": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "amount": 0.1
+        }
+      }
+    },
+    {
+        "name": "Create a Web3 Wallet ",
+        "description": "Use Web3 React to connect a wallet",
+        "tutorial": "https://www.youtube.com/watch?v=DCA53Go5ON8/",
+        "points": 0,
+        "emoji": "ethLogo",
+        "verifier": {
+            "id": "test-always-false"
+      }
+    },
+    {
+        "name": "Learn from Scaffold ETH",
+        "description": "Use Web3 React to connect a wallet",
+        "tutorial": "https://www.youtube.com/watch?v=ShJZf5lsXiM",
+        "points": 0,
+        "emoji": "ethLogo",
+        "verifier": {
+            "id": "test-always-false"
+      }
     }
     ]
 }

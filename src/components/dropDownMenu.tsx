@@ -38,7 +38,11 @@ export default function DropDownMenu({ disconnect, connect }) {
   return (
     <>
       {!active && (
-        <Menu as="div" className="relative flex text-left" onClick={connect}>
+        <Menu
+          as="div"
+          className="relative max-w-[50%] flex text-left"
+          onClick={connect}
+        >
           <button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             Connect
             {svgIcon}
@@ -47,7 +51,7 @@ export default function DropDownMenu({ disconnect, connect }) {
       )}
 
       {active && (
-        <Menu as="div" className="relative flex text-left">
+        <Menu as="div" className="relative max-w-[50%] flex text-left">
           <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             {formatAddress(account, 2)}
             {svgIcon}
@@ -80,11 +84,14 @@ export default function DropDownMenu({ disconnect, connect }) {
                 <Menu.Item>
                   {({ active }) => (
                     <a
-                      href="http://google.com"
+                      href={formatEtherscanLink("Account", account, chainId)}
+                      target="_blank"
+                      // href="http://google.com"
                       className={classNames(
                         active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-4 py-2 text-sm"
                       )}
+                      rel="noreferrer"
                     >
                       View on Etherscan
                     </a>

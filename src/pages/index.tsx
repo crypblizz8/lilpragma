@@ -8,6 +8,7 @@ import { Quest } from "../types/index";
 import questData from "../quests/quests";
 import { getQuestNames, getJourneys } from "../quests/questData";
 import Header from "../components/header";
+import Link from "next/link";
 
 export default function Home({ getJourneysData }) {
   const headContent = (
@@ -23,7 +24,7 @@ export default function Home({ getJourneysData }) {
       <div className="grid grid-cols-2 xs:gap-6 lg:gap-12 lg:grid-cols-3 ">
         {getJourneysData.map((e: Quest, i) => {
           // console.log(e);
-          if (enabledQuest && e.available) {
+          if (enabledQuest) {
             // if (enabledQuest) {
             <QuestCards key={i} questData={e} />;
             return <QuestCards key={i} questData={e} />;
@@ -57,6 +58,9 @@ export default function Home({ getJourneysData }) {
       <p className="py-6 text-xl text-center text-slate-500">
         smoll web3 projects with a lil dev score
       </p>
+      {/* <Link href="/ethos" passHref>
+        <p className="py-4 underline text-center text-slate-500">manifesto</p>
+      </Link> */}
       {questContent(true)}
     </div>
   );

@@ -1,29 +1,32 @@
-{
-} // import fs from "fs";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/questCard.styles";
-import { Quest } from "../types/index";
+// import Quest from "../types/index";
 
 export default function QuestCards({ questData: Quest }) {
   return (
-    <Link href={`/${Quest.id}`} passHref>
-      <div style={questCardStyles.questContainer as React.CSSProperties}>
-        <div style={questCardStyles.topContainer as React.CSSProperties}>
-          <Image
-            src={`/images/quests/${Quest?.id}.png`}
-            // src={require(Quest?.img).src}
-            alt={Quest.id}
-            height={100}
-            width={100}
-          />
+    <div aria-disabled={Quest.available}>
+      <Link href={Quest.available ? `/${Quest.id}` : "#"} passHref>
+        <div style={questCardStyles.questContainer as React.CSSProperties}>
+          <div style={questCardStyles.topContainer as React.CSSProperties}>
+            <Image
+              src={`/images/quests/${Quest?.id}.png`}
+              // src={require(Quest?.img).src}
+              alt={Quest.id}
+              height={100}
+              width={100}
+            />
+          </div>
+          <div style={questCardStyles.bottomContainer as React.CSSProperties}>
+            <h2 className="text-xl m-0 p-0 text-white">{Quest.id}</h2>
+            {/* <p className="text-slate-200 p-0 m-0 text-xs">{Quest.description}</p> */}
+            <p className="text-slate-200 p-0 m-0 text-xs">
+              {!Quest.available ? "Coming Soon" : Quest.description}{" "}
+            </p>
+          </div>
         </div>
-        <div style={questCardStyles.bottomContainer as React.CSSProperties}>
-          <h2 className="text-xl m-0 p-0 text-white">{Quest.name}</h2>
-          <p className="text-slate-200 p-0 m-0 text-xs">{Quest.description}</p>
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
@@ -37,6 +40,7 @@ const questCardStyles = {
     borderWidth: 1,
     borderColor: "rgb(191, 191, 191)",
     maxWidth: 200,
+    height: "100%",
   },
   topContainer: {
     padding: "1em",

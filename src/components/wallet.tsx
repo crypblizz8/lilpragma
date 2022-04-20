@@ -17,9 +17,7 @@ export default function Wallet() {
   const { account, activate, active, chainId, deactivate, setError } =
     useWeb3React();
 
-  useEffect(() => {
-    console.log("useEffect active", active);
-  }, [active]);
+  useEffect(() => {}, [active]);
 
   async function connect() {
     try {
@@ -64,9 +62,9 @@ export default function Wallet() {
   }
 
   return (
-    <div className="flex items-center flex-wrap p-6">
-      <div className="w-full block  flex-grow lg:flex lg:items-end lg:w-auto xs:justify-end">
-        <div className="m-2 mx-4">{getNetworkName(chainId)}</div>
+    <div className="flex flex-row items-center flex-wrap p-6">
+      <div className="flex-row flex-grow flex lg:items-end w-auto xs:justify-end">
+        <div className="m-2 mx-4 ">{getNetworkName(chainId)}</div>
         <DropDownMenu disconnect={disconnect} connect={connect} />
       </div>
     </div>

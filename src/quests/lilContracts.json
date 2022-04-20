@@ -19,23 +19,39 @@
         }
     },
     {
-            "name": "Training wheels",
-            "description": "Deploy any kind of contract to the Ropsten test network.",
-            "points": 20,
-            "emoji": "redCircle",
+            "name": "Wishing Well",
+            "description": "Get Rinkeby ETH from the Faucet",
+            "tutorial": "https://rinkebyfaucet.com/",
+            "points": 50,
+            "emoji": "ethLogo",
             "verifier": {
-                "id": "deployed-contract",
-                "chainId": 3
+                "id": "has-ETH",
+                "chainId": 4,
+                "params": {
+                "amount": 0.01
             }
-        },
+      }
+    },
         {
             "name": "Tests, tests everywhere",
             "description": "Deploy any kind of contract to the Rinkeby test network.",
             "points": 20,
+            "tutorial": "https://www.youtube.com/watch?v=bZKVfXmzRDw",
             "emoji": "yellowCircle",
             "verifier": {
                 "id": "deployed-contract",
                 "chainId": 4
+            }
+        },
+        {
+            "name": "Training wheels",
+            "description": "Deploy any kind of contract to the Ropsten test network.",
+            "points": 20,
+            "emoji": "redCircle",
+            "tutorial": "https://www.youtube.com/watch?v=bZKVfXmzRDw",
+            "verifier": {
+                "id": "deployed-contract",
+                "chainId": 3
             }
         }
     ]

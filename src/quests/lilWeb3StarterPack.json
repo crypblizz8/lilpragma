@@ -20,8 +20,9 @@
     },
     {
       "name": "Have ETH in wallet",
-      "description": "Own some ETH. Using verifier `has-ETH`",
+      "description": "Own some ETH.",
       "points": 400,
+      "tutorial": "https://ethereum.org/en/get-eth/",
       "emoji": "ethLogo",
       "verifier": {
         "id": "has-ETH",
@@ -31,10 +32,11 @@
       }
     },
     {
-      "name": "Have MATIC in polygon wallet",
-      "description": "Own some MATIC on polygon. Using verifier `has-ETH`",
+      "name": "Have MATIC in Polygon wallet",
+      "description": "Own some MATIC on polygon.",
       "points": 400,
       "emoji": "polygonLogo",
+      "tutorial": "https://ethereum.org/en/get-eth/",
       "verifier": {
         "id": "has-ETH",
         "chainId": 137,
@@ -48,6 +50,7 @@
       "description": "Own 0.01+ WETH ERC20 Token.",
       "points": 400,
       "emoji": "ERC20",
+      "tutorial": "https://ethereum.org/en/get-eth/",
       "verifier": {
         "id": "has-token-ERC20",
         "params": {
@@ -61,6 +64,7 @@
       "description": "Own an ENS NFT(ERC721).",
       "points": 400,
       "emoji": "ERC721",
+      "tutorial": "https://www.youtube.com/watch?v=ChbMDrrI3NI",
       "verifier": {
         "id": "has-nft-ERC721",
         "params": {
