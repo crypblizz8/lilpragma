@@ -27,10 +27,7 @@ export default function Wallet() {
         (error) => {
           if (error instanceof UserRejectedRequestError) {
             // ignore user rejected error
-            walletConnect();
           } else {
-            walletConnect();
-
             console.log("error..");
             setError(error);
           }
@@ -69,7 +66,7 @@ export default function Wallet() {
     <div className="flex flex-row items-center flex-wrap p-6">
       <div className="flex-row flex-grow flex lg:items-end w-auto xs:justify-end">
         <div className="m-2 mx-4 ">{getNetworkName(chainId)}</div>
-        <DropDownMenu disconnect={disconnect} connect={connect} />
+        <DropDownMenu disconnect={disconnect} connect={connect} walletConnect={walletConnect} />
       </div>
     </div>
   );
