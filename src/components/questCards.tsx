@@ -4,6 +4,8 @@ import styles from "../styles/questCard.styles";
 // import Quest from "../types/index";
 
 export default function QuestCards({ questData: Quest }) {
+  console.log(Quest?.id);
+
   return (
     <div aria-disabled={Quest.available}>
       <Link href={Quest.available ? `/${Quest.id}` : "#"} passHref>
@@ -13,7 +15,7 @@ export default function QuestCards({ questData: Quest }) {
         >
           <div style={questCardStyles.topContainer as React.CSSProperties}>
             <Image
-              src={`/images/quests/${Quest?.id}.png`}
+              src={`/images/quests/${Quest?.toLowerCase().id.toLowerCase()}.png`}
               // src={require(Quest?.img).src}
               alt={Quest.id}
               height={100}
