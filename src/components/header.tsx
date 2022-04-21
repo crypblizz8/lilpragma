@@ -21,7 +21,10 @@ export default function Header() {
         property="og:description"
         content="smoll web3 projects with a lil dev score"
       />
-      <meta property="og:image" content="/ogImage.png" />
+      <meta
+        property="og:image"
+        content="https://www.lilpragma.xyz/ogImage.png"
+      />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="lilpragma.xyz" />
@@ -31,7 +34,10 @@ export default function Header() {
         name="twitter:description"
         content="smoll web3 projects with a lil dev score"
       />
-      <meta name="twitter:image" content="/ogImage.png" />
+      <meta
+        name="twitter:image"
+        content="https://www.lilpragma.xyz/ogImage.png"
+      />
       <Wallet />
     </Head>
   );
