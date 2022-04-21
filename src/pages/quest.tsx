@@ -107,12 +107,12 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {headContent}
+      {/* {headContent} */}
       <main className={styles.main}>
         {questDescriptionContent}
         {mainQuestContent()}
       </main>
-      {footerContent}
+      {/* {footerContent} */}
     </div>
   );
 }
