@@ -4,7 +4,7 @@ import styles from "../styles/questCard.styles";
 // import Quest from "../types/index";
 
 export default function QuestCards({ questData: Quest }) {
-  console.log(Quest?.id);
+  // console.log(Quest?.id);
 
   return (
     <div aria-disabled={Quest.available}>

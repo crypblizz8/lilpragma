@@ -18,6 +18,7 @@ export function getJourneys(): any {
         .filter(i => i.isFile() && i.name.endsWith('.json'))
 
     const items = files.map(i => {
+        console.log(i.name)
         const fullPath = join(dir, i.name)
         const content = fs.readFileSync(fullPath, 'utf8')
         if (!content) {
