@@ -52,7 +52,7 @@ export default function QuestPage({ getQuestData }) {
       setScore(score);
     }
 
-    console.log("quest.name", quest.name);
+    // console.log("quest.name", quest.name);
 
     getScore();
   }, [quest.journey, web3.account]);

@@ -26,7 +26,7 @@ export default function Home({ getJourneysData }) {
           // console.log(e);
           if (enabledQuest) {
             // if (enabledQuest) {
-            <QuestCards key={i} questData={e} />;
+            // <QuestCards key={i} questData={e} />;
             return <QuestCards key={i} questData={e} />;
           } else {
             return null;

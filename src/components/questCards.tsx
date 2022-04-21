@@ -7,7 +7,10 @@ export default function QuestCards({ questData: Quest }) {
   return (
     <div aria-disabled={Quest.available}>
       <Link href={Quest.available ? `/${Quest.id}` : "#"} passHref>
-        <div style={questCardStyles.questContainer as React.CSSProperties}>
+        <div
+          style={questCardStyles.questContainer as React.CSSProperties}
+          className="hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300"
+        >
           <div style={questCardStyles.topContainer as React.CSSProperties}>
             <Image
               src={`/images/quests/${Quest?.id}.png`}

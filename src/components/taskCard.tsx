@@ -26,7 +26,7 @@ export default function TaskCard({ quest }) {
   return (
     <div
       style={{ maxWidth: 250 }}
-      className="border border-neutral-400 max-w-200 rounded-xl flex flex-col"
+      className="border border-neutral-400 max-w-200 rounded-xl flex flex-col "
     >
       <div className="px-4">
         <div className="flex justify-end my-2">
