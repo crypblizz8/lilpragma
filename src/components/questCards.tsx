@@ -15,7 +15,7 @@ export default function QuestCards({ questData: Quest }) {
         >
           <div style={questCardStyles.topContainer as React.CSSProperties}>
             <Image
-              src={`/images/quests/${Quest?.toLowerCase().id.toLowerCase()}.png`}
+              src={`/images/quests/${Quest?.id}.png`}
               // src={require(Quest?.img).src}
               alt={Quest.id}
               height={100}
